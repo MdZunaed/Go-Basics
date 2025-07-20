@@ -7,7 +7,7 @@ func main() {
 
 	for i := 1; i <= 5; i++ {
 		if i == 5 {
-			fmt.Print("Skipping")
+			fmt.Println("Skipping")
 			continue // To skip current iteration
 		}
 		fmt.Println(i)
