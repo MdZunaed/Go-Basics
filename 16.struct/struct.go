@@ -6,10 +6,15 @@ import (
 )
 
 func main() {
+	newCustomer := customer{
+		name:  "Vincenzo",
+		phone: "017..",
+	}
 	myOrder := order{
-		id:      "trx1234",
-		ammount: 50.8,
-		status:  "recieved",
+		id:       "trx1234",
+		ammount:  50.8,
+		status:   "recieved",
+		customer: newCustomer,
 	}
 
 	myOrder2 := order{
@@ -17,6 +22,10 @@ func main() {
 		ammount:   100.2,
 		status:    "pending",
 		createdAt: time.Now(),
+		customer: customer{
+			name:  "Cassano",
+			phone: "018..",
+		},
 	}
 
 	orderWithFunc := newOrder("trx", 25, "canceled")
@@ -47,6 +56,11 @@ type order struct {
 	ammount   float32
 	status    string
 	createdAt time.Time // nano-second precision
+	customer  customer // embedding struct
+}
+type customer struct {
+	name  string
+	phone string
 }
 
 func newOrder(id string, ammount float32, status string) *order {
