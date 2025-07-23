@@ -65,4 +65,52 @@ func main() {
 	defer f.Close()
 
 	f.WriteString("Created with Go")
+
+	/// To insert new
+	bytes := []byte("\nNew added by Go")
+	f.Write(bytes)
+
+	/// Read and write(replace) to another file(streaming fashion)
+	// sourceFile, err := os.Open("test.txt")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// defer sourceFile.Close()
+	// destFile, err := os.Create("create.txt")
+
+	// if err != nil {
+	// 	panic(destFile)
+	// }
+	// defer destFile.Close()
+
+	// reader := bufio.NewReader(sourceFile)
+	// writer := bufio.NewWriter(destFile)
+	// for {
+	// 	b, err := reader.ReadByte()
+	// 	if err != nil {
+	// 		if err.Error() != "EOF" {
+	// 			panic(err)
+	// 		}
+	// 		break
+	// 	}
+	// 	er := writer.WriteByte(b)
+	// 	if err != nil {
+	// 		panic(er)
+	// 	}
+	// }
+	// writer.Flush()
+
+	/// Delete a file
+	// To create a test file for delete
+	// fileToDelete, err := os.Create("delete.txt")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// defer fileToDelete.Close()
+	// f.WriteString("Created with Go")
+	// time.Sleep(time.Second * 3)
+	erro := os.Remove("delete.txt")
+	if erro != nil {
+		panic(erro)
+	}
 }
