@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Go Fiber Chat</title></head>
+<body>
+  <h2>WebSocket Chat</h2>
+  <input id="msg" type="text" />
+  <button onclick="sendMsg()">Send</button>
+  <ul id="chat"></ul>
+
+  <script>
+    const socket = new WebSocket("ws://localhost:3000/ws");
+    const chat = document.getElementById("chat");
+
+    socket.onmessage = function (event) {
+      const li = document.createElement("li");
+      li.innerText = event.data;
+      chat.appendChild(li);
+    };
+
+    function sendMsg() {
+      const input = document.getElementById("msg");
+      socket.send(input.value);
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
